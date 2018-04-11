@@ -1,86 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
-	<meta charset="UTF-8">
-	<title>index</title>
-	<link rel="stylesheet" type="text/css" href="../../css/main.css">
-	<link rel="stylesheet" type="text/css" href="../../font-awesome-4.7.0/css/font-awesome.css">
-	<link rel="stylesheet" type="text/css" href="../../css/webstrap.css">
-	<link rel="stylesheet" type="text/css" href="../../css/layui.css">
+<head>
+<meta charset="UTF-8">
+<title>index</title>
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<link rel="stylesheet" type="text/css"
+	href="../../font-awesome-4.7.0/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="../../css/webstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/layui.css">
 </head>
-	<div>
-		<ol class="breadcrumb">
-			<li><a href="#">Home</a></li>
-			<li class="active">数据源管理</li>
-		</ol>
-	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<fieldset class="layui-elem-field site-demo-button"
-					style="margin: 0 0 15px;">
-							  <legend>操作</legend>
-					<div style="margin: 10px;">
-						<a class="layui-btn layui-btn-small layui-btn-primary" id="addDataSource" href="#" onclick="openAdd();">新增数据源</a>
-					</div>
-				</fieldset>
-				<table class="layui-table" id="tables">
-				</table>
-				<script type="text/html" id="toolBar">
-  					<a class="layui-btn layui-btn-primary layui-btn-mini" lay-event="detail">查看</a>
-  					<a class="layui-btn layui-btn-mini" lay-event="edit">编辑</a>
-  					<a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del">删除</a>
+<div>
+	<ol class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li class="active">数据源管理</li>
+	</ol>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<fieldset class="layui-elem-field site-demo-button"
+				style="margin: 0 0 15px;">
+				<legend>操作</legend>
+				<div style="margin: 10px;">
+					<a class="layui-btn layui-btn-small layui-btn-primary"
+						id="addDataSource" href="#" onclick="openAdd();">新增数据源</a>
+				</div>
+			</fieldset>
+			<table class="layui-table" id="tables">
+			</table>
+			<script type="text/html" id="toolBar">
+  					<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+  					<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  					<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 				</script>
-			</div>
 		</div>
 	</div>
+</div>
 
-	<div class="container" id="dataSourceInfo" style="display: none;">
-		<form class="layui-form">
-			<div class="layui-form-item">
-				<label class="layui-form-label">数据源名</label>
-				<div class="layui-input-block">
-					<input type="text" name="dataSourceName" id="dataSourceName" autocomplete="off"
-						placeholder="请输入数据源名" class="layui-input">
-				</div>
+<div class="container" id="dataSourceInfo" style="display: none;margin-right: 50px;">
+	<form class="layui-form">
+		<div class="layui-form-item">
+			<label class="layui-form-label">数据源名</label>
+			<div class="layui-input-block">
+				<input type="text" name="dataSourceName" id="dataSourceName"
+					autocomplete="off" placeholder="请输入数据源名" class="layui-input">
 			</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label">DriverClass</label>
-				<div class="layui-input-block">
-					<input type="text" name="driverClassName" id="driverClassName" autocomplete="off"
-						placeholder="请输入DriverClass" class="layui-input">
-				</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">DriverClass</label>
+			<div class="layui-input-block">
+				<input type="text" name="driverClassName" id="driverClassName"
+					autocomplete="off" placeholder="请输入DriverClass" class="layui-input">
 			</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label">url</label>
-				<div class="layui-input-block">
-					<input type="text" name="url" id="url" autocomplete="off"
-						placeholder="请输入url" class="layui-input">
-				</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">url</label>
+			<div class="layui-input-block">
+				<input type="text" name="url" id="url" autocomplete="off"
+					placeholder="请输入url" class="layui-input">
 			</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label">用户名</label>
-				<div class="layui-input-block">
-					<input type="text" name="username" id="username" autocomplete="off"
-						placeholder="请输入用户名" class="layui-input">
-				</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">用户名</label>
+			<div class="layui-input-block">
+				<input type="text" name="username" id="username" autocomplete="off"
+					placeholder="请输入用户名" class="layui-input">
 			</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label">密码</label>
-				<div class="layui-input-block">
-					<input type="password" name="password" id="password" autocomplete="off"
-						placeholder="请输入密码" class="layui-input">
-				</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">密码</label>
+			<div class="layui-input-block">
+				<input type="password" name="password" id="password"
+					autocomplete="off" placeholder="请输入密码" class="layui-input">
 			</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label">过滤器</label>
-				<div class="layui-input-block">
-					<input type="text" name="filters" id="filters" autocomplete="off"
-						placeholder="请输入过滤器" class="layui-input">
-				</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">过滤器</label>
+			<div class="layui-input-block">
+				<input type="text" name="filters" id="filters" autocomplete="off"
+					placeholder="请输入过滤器" class="layui-input">
 			</div>
-		</form>
-	</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn" lay-submit="" lay-filter="formDemo">立即提交</button>
+				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+			</div>
+		</div>
+	</form>
+</div>
 <script type="text/javascript" src="../../js/jquery-1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="../../js/axios.min.js"></script>
 <script type="text/javascript" src="../../js/jquery.pjax.js"></script>

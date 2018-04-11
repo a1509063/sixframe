@@ -8,7 +8,7 @@ layui.use(['table','laydate','element','form'], function(){
 		  url:'/sixcore/dataSource/currentDataSource'
 		  ,elem:'#tables'
 		  ,page:true
-		  ,size:'sm'
+		  ,even:true
 		  ,limit:1
 		  ,cols:[[
 			{field:'dataSourceName', width:120, sort: true,title:'数据源名'}
@@ -102,5 +102,12 @@ function openAdd(){
 		area: ['480px', '480px'], // 宽高
 		content: $("#dataSourceInfo"),
 		offset:'50px'
+	});
+}
+
+function addDataSource(){
+	$.axiosSubmit({
+		url:"addDataSource"
+		,data:$("#")
 	});
 }
