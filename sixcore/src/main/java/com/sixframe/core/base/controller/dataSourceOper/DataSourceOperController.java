@@ -1,4 +1,4 @@
-package com.sixframe.core.base.controller;
+package com.sixframe.core.base.controller.dataSourceOper;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -60,7 +60,10 @@ public class DataSourceOperController {
 		tm.setData(list);
 		return tm;
 	}
-	
+	/**
+	 * 获取数据源详情
+	 * @return
+	 */
 	@RequestMapping(value = "dataSourceInfo",method = RequestMethod.GET)
 	public ResultMessage dataSourceInfo() {
 		Map<String, DataSource> dataSources = dataSourceOperService.currentDataSource();
@@ -70,5 +73,14 @@ public class DataSourceOperController {
 			list.add(dataSources.get(iterator.next()));
 		}
 		return new ResultMessage(list);
+	}
+	/**
+	 * 添加数据源
+	 * @return
+	 */
+	@RequestMapping(value = "addDataSource",method = RequestMethod.POST)
+	public ResultMessage addDataSource() {
+//		dataSourceOperService.addDataSource();
+		return new ResultMessage();
 	}
 }
