@@ -21,7 +21,7 @@
 					style="margin: 0 0 15px;">
 							  <legend>操作</legend>
 					<div style="margin: 10px;">
-						<a class="layui-btn layui-btn-small layui-btn-primary">新增数据源</a>
+						<a class="layui-btn layui-btn-small layui-btn-primary" id="addDataSource" href="#" onclick="openAdd();">新增数据源</a>
 					</div>
 				</fieldset>
 				<table class="layui-table" id="tables">
@@ -38,40 +38,45 @@
 	<div class="container" id="dataSourceInfo" style="display: none;">
 		<form class="layui-form">
 			<div class="layui-form-item">
+				<label class="layui-form-label">数据源名</label>
+				<div class="layui-input-block">
+					<input type="text" name="dataSourceName" id="dataSourceName" autocomplete="off"
+						placeholder="请输入数据源名" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">DriverClass</label>
+				<div class="layui-input-block">
+					<input type="text" name="driverClassName" id="driverClassName" autocomplete="off"
+						placeholder="请输入DriverClass" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">url</label>
+				<div class="layui-input-block">
+					<input type="text" name="url" id="url" autocomplete="off"
+						placeholder="请输入url" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
 				<label class="layui-form-label">用户名</label>
 				<div class="layui-input-block">
-					<input type="text" name="userName" id="userName" autocomplete="off"
+					<input type="text" name="username" id="username" autocomplete="off"
 						placeholder="请输入用户名" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-form-item">
-				<label class="layui-form-label">是否禁用</label>
+				<label class="layui-form-label">密码</label>
 				<div class="layui-input-block">
-					<input type="checkbox" name="accountNonLocked" lay-skin="switch"
-						lay-text="是|否">
+					<input type="password" name="password" id="password" autocomplete="off"
+						placeholder="请输入密码" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-form-item">
-				<label class="layui-form-label">角色</label>
+				<label class="layui-form-label">过滤器</label>
 				<div class="layui-input-block">
-					<select name="roles" lay-verify="required" lay-search="">
-						<option value="">直接选择或搜索选择</option>
-						<option value="1">用户</option>
-					</select>
-				</div>
-			</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label">验证日期</label>
-				<div class="layui-input-block">
-					<input type="text" name="date" id="date" lay-verify="date"
-						placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-				</div>
-			</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label">性别</label>
-				<div class="layui-input-block">
-					<input type="radio" name="sex" value="男" title="男" checked="">
-					<input type="radio" name="sex" value="女" title="女">
+					<input type="text" name="filters" id="filters" autocomplete="off"
+						placeholder="请输入过滤器" class="layui-input">
 				</div>
 			</div>
 		</form>

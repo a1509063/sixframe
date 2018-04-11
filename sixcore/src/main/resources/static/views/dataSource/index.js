@@ -9,6 +9,7 @@ layui.use(['table','laydate','element','form'], function(){
 		  ,elem:'#tables'
 		  ,page:true
 		  ,size:'sm'
+		  ,limit:1
 		  ,cols:[[
 			{field:'dataSourceName', width:120, sort: true,title:'数据源名'}
 			,{field:'driverClassName', width:120,title:'driverClass'}
@@ -92,4 +93,14 @@ layui.use(['table','laydate','element','form'], function(){
 //		    console.log(error);
 //		});
 	}
+	
 });
+function openAdd(){
+	layer.open({
+		type: 1,
+		title:"新增数据源",
+		area: ['480px', '480px'], // 宽高
+		content: $("#dataSourceInfo"),
+		offset:'50px'
+	});
+}

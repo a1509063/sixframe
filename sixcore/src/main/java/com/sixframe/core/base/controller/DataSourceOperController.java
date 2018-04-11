@@ -55,7 +55,10 @@ public class DataSourceOperController {
 		while (iterator.hasNext()) {
 			list.add(dataSources.get(iterator.next()));
 		}
-		return new TableResultMessage<DataSource>(list);
+		TableResultMessage<DataSource> tm = new TableResultMessage<>();
+		tm.setCount(1L);
+		tm.setData(list);
+		return tm;
 	}
 	
 	@RequestMapping(value = "dataSourceInfo",method = RequestMethod.GET)
