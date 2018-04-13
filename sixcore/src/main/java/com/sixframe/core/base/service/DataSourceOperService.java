@@ -51,18 +51,8 @@ public class DataSourceOperService {
 	 */
 	public void addDataSource(DataSource dataSource) {
 		try {
-			applicationUtil.writeApplication(dataSource);
+			applicationUtil.writeApplication(dataSource,"dataSourceName");
 		} catch (IOException e) {
-			throw new BusinessException(e.getMessage());
-		} catch (IllegalAccessException e) {
-			throw new BusinessException(e.getMessage());
-		} catch (IllegalArgumentException e) {
-			throw new BusinessException(e.getMessage());
-		} catch (InvocationTargetException e) {
-			throw new BusinessException(e.getMessage());
-		} catch (NoSuchMethodException e) {
-			throw new BusinessException(e.getMessage());
-		} catch (SecurityException e) {
 			throw new BusinessException(e.getMessage());
 		}
 	}

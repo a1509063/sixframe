@@ -80,7 +80,6 @@ public class DataSourceOperController {
 	 */
 	@RequestMapping(value = "addDataSource",method = RequestMethod.POST)
 	public ResultMessage addDataSource(DataSource dataSource) {
-		System.out.println(dataSource.getDataSourceName());
 		dataSourceOperService.addDataSource(dataSource);
 		return new ResultMessage();
 	}
