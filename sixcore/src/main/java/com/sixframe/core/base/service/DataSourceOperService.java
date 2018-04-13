@@ -45,4 +45,25 @@ public class DataSourceOperService {
 		}
 		return aProperties.dataSources;
 	}
+	/**
+	 * 新增数据源
+	 * @param dataSource
+	 */
+	public void addDataSource(DataSource dataSource) {
+		try {
+			applicationUtil.writeApplication(dataSource);
+		} catch (IOException e) {
+			throw new BusinessException(e.getMessage());
+		} catch (IllegalAccessException e) {
+			throw new BusinessException(e.getMessage());
+		} catch (IllegalArgumentException e) {
+			throw new BusinessException(e.getMessage());
+		} catch (InvocationTargetException e) {
+			throw new BusinessException(e.getMessage());
+		} catch (NoSuchMethodException e) {
+			throw new BusinessException(e.getMessage());
+		} catch (SecurityException e) {
+			throw new BusinessException(e.getMessage());
+		}
+	}
 }

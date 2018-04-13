@@ -55,6 +55,14 @@ layui.use(['table','laydate','element','form'], function(){
 	  form.on('radio', function(data){
       });
 	  
+	  form.on('submit(dataSourceInfo)', function(data){
+		  console.log(data.elem) //被执行事件的元素DOM对象，一般为button对象
+		  console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
+		  console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+		  addDataSource(data);
+		  return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+		});
+	  
 	/** 编辑 */
 	function editUser(userId){
 		return $.axiosSubmit({
@@ -77,37 +85,37 @@ layui.use(['table','laydate','element','form'], function(){
 				}
 			}
 		})
-//		axios({
-//		  method: 'get',
-//		  url: '/demo/user/findUserInfoById',
-//		  headers:{
-//			  'Authorization': access_token
-//		  },
-//		  params:{
-//			  id:userId
-//		  }
-//		}).then(function (response) {
-//			
-//		}).catch(function (error) {
-//			alert(error);
-//		    console.log(error);
-//		});
 	}
 	
+	/**新增*/
+	function addDataSource(data){
+		$.axiosSubmit({
+			url:'/sixcore/dataSource/addDataSource'
+			,data:data.field
+			,method:'post'
+			,callback:function(response){
+				var result = eval("(" + response + ")");
+				var status = result.status;
+				if(status == '200'){
+					layer.alert("新增成功！",function(){
+						location.reload();
+					});
+					layer.close(currentIndex);
+				}
+			}
+		});
+	}
 });
+var currentIndex;
 function openAdd(){
-	layer.open({
+	currentIndex = layer.open({
 		type: 1,
 		title:"新增数据源",
 		area: ['480px', '480px'], // 宽高
 		content: $("#dataSourceInfo"),
 		offset:'50px'
-	});
-}
-
-function addDataSource(){
-	$.axiosSubmit({
-		url:"addDataSource"
-		,data:$("#")
+//		,end: function(){
+//			location.reload();
+//		}
 	});
 }

@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class ApplicationProperties {
 	
-	private final String DATA_SOURCE_PREFIX="spring.datasource.six";
+	public static final String DATA_SOURCE_PREFIX="spring.datasource.six";
 	
 	public Map<String,DataSource> dataSources;
 	
