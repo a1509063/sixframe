@@ -52,7 +52,7 @@ public class ApplicationUtil {
 		FileOutputStream outputStream = null;
 		try {
 			outputStream = new FileOutputStream(file,true);
-			outputStream.write("\\r\\n".getBytes());//写入一个换行
+			outputStream.write("\r\n".getBytes());//写入一个换行
 			String remarks = "\r\n#" + entity.getClass().getName();
 			outputStream.write(remarks.getBytes());
 			String subValue = "";
