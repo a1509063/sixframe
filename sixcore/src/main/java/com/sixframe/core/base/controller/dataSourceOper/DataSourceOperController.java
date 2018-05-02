@@ -48,8 +48,8 @@ public class DataSourceOperController {
 	 * @return
 	 */
 	@RequestMapping(value = "currentDataSource",method = RequestMethod.GET)
-	public TableResultMessage<DataSource> currentDataSource() {
-		Map<String, DataSource> dataSources = dataSourceOperService.currentDataSource();
+	public TableResultMessage<DataSource> currentDataSource(HttpServletRequest request) {
+		Map<String, DataSource> dataSources = dataSourceOperService.currentDataSource(request);
 		List<DataSource> list = new ArrayList<>();
 		Iterator<String> iterator = dataSources.keySet().iterator();
 		while (iterator.hasNext()) {
@@ -65,8 +65,8 @@ public class DataSourceOperController {
 	 * @return
 	 */
 	@RequestMapping(value = "dataSourceInfo",method = RequestMethod.GET)
-	public ResultMessage dataSourceInfo() {
-		Map<String, DataSource> dataSources = dataSourceOperService.currentDataSource();
+	public ResultMessage dataSourceInfo(HttpServletRequest request) {
+		Map<String, DataSource> dataSources = dataSourceOperService.currentDataSource(request);
 		List<DataSource> list = new ArrayList<>();
 		Iterator<String> iterator = dataSources.keySet().iterator();
 		while (iterator.hasNext()) {
@@ -79,8 +79,8 @@ public class DataSourceOperController {
 	 * @return
 	 */
 	@RequestMapping(value = "addDataSource",method = RequestMethod.POST)
-	public ResultMessage addDataSource(DataSource dataSource) {
-		dataSourceOperService.addDataSource(dataSource);
+	public ResultMessage addDataSource(DataSource dataSource,HttpServletRequest request) {
+		dataSourceOperService.addDataSource(dataSource,request);
 		return new ResultMessage();
 	}
 }

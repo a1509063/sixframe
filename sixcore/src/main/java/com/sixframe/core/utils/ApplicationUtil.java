@@ -10,6 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Properties;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.sixframe.core.entity.ApplicationProperties;
@@ -18,13 +19,17 @@ import com.sixframe.utils.exception.BusinessException;
 @Component
 public class ApplicationUtil {
 
-	private static final String FILE_NAME = "application.properties";
+	@Value("${isDev}")
+	private boolean isDev=false;
+	
+	public static final String FILE_NAME_DEV = "application-dev.properties";
+	public static final String FILE_NAME_PROD = "application-prod.properties";
 
-	public Properties readApplication() throws IOException {
-		File dirFile = new File("");
-		String url = dirFile.getAbsolutePath();
-		url = url + "\\src\\main\\resources\\";
-		File file = new File(url + FILE_NAME);
+	public Properties readApplication(String realPath) throws IOException {
+//		File dirFile = new File(realPath);
+//		String url = dirFile.getAbsolutePath();
+//		url = url + "\\src\\main\\resources\\";
+		File file = new File(realPath);
 		FileInputStream inStream = null;
 		try {
 			inStream = new FileInputStream(file);
@@ -42,13 +47,17 @@ public class ApplicationUtil {
 		}
 	}
 	
-	public <T> void writeApplication(T entity,String subName) throws IOException {
+	/**
+	 * 写入属性
+	 * @param entity 属性实体类名
+	 * @param subName 属性名（可为空）
+	 * @param realPath 文件路径
+	 * @throws IOException
+	 */
+	public <T> void writeApplication(T entity,String subName,String realPath) throws IOException {
 		String prefx = ApplicationProperties.DATA_SOURCE_PREFIX;
 		Field[] fields = entity.getClass().getDeclaredFields();
-		File dirFile = new File("");
-		String url = dirFile.getAbsolutePath();
-		url = url + "\\src\\main\\resources\\";
-		File file = new File(url + FILE_NAME);
+		File file =  new File(realPath);
 		FileOutputStream outputStream = null;
 		try {
 			outputStream = new FileOutputStream(file,true);

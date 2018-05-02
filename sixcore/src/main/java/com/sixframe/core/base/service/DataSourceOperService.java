@@ -1,11 +1,15 @@
 package com.sixframe.core.base.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.sixframe.core.entity.ApplicationProperties;
@@ -18,10 +22,21 @@ public class DataSourceOperService {
 	@Autowired
 	private ApplicationUtil applicationUtil;
 	
-	public Map<String, DataSource> currentDataSource() {
+	@Value("${isDev}")
+	private boolean isDev=false;
+	
+	public Map<String, DataSource> currentDataSource(HttpServletRequest request) {
 		Properties properties = null;
+		String realPath = null;
+		if(isDev) {
+			File dirFile = new File("");
+			String url = dirFile.getAbsolutePath();
+			realPath = url + "\\src\\main\\resources\\application-dev.properties";
+		}else {
+			realPath = request.getServletContext().getRealPath("\\WEB-INF\\classes\\application-prod.properties");
+		}
 		try {
-			properties = applicationUtil.readApplication();
+			properties = applicationUtil.readApplication(realPath);
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new BusinessException(e.getMessage());
@@ -49,9 +64,18 @@ public class DataSourceOperService {
 	 * 新增数据源
 	 * @param dataSource
 	 */
-	public void addDataSource(DataSource dataSource) {
+	public void addDataSource(DataSource dataSource,HttpServletRequest request) {
 		try {
-			applicationUtil.writeApplication(dataSource,"dataSourceName");
+			String realPath = null;
+			if(isDev) {
+				File dirFile = new File("");
+				String url = dirFile.getAbsolutePath();
+				realPath = url + "\\src\\main\\resources\\application-dev.properties";
+			}else {
+				realPath = request.getServletContext().getRealPath("\\WEB-INF\\classes\\application-prod.properties");
+			}
+			
+			applicationUtil.writeApplication(dataSource,"dataSourceName",realPath);
 		} catch (IOException e) {
 			throw new BusinessException(e.getMessage());
 		}
