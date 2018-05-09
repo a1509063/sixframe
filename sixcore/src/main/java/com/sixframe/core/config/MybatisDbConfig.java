@@ -7,6 +7,7 @@ import java.util.Properties;
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.type.JdbcType;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
@@ -45,6 +46,7 @@ public class MybatisDbConfig {
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
         configuration.setMapUnderscoreToCamelCase(mapUnderscoreToCamelCase);//设置是否自动映射驼峰规则属性
         configuration.setCallSettersOnNulls(true);//设置查询字段为空时，resultMap中可以显示
+        configuration.setJdbcTypeForNull(JdbcType.NULL);//设置字段为空时，可插入jdbctype为null
         configuration.addMappers("com.demo.app.dao.main.mapper");
         factoryBean.setConfiguration(configuration);
         String dataType = dataSource1.getConnection().getMetaData().getDatabaseProductName();//链接数据库类型
@@ -60,6 +62,7 @@ public class MybatisDbConfig {
     	org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
     	configuration.setMapUnderscoreToCamelCase(mapUnderscoreToCamelCase);//设置是否自动映射驼峰规则属性
     	configuration.setCallSettersOnNulls(true);//设置查询字段为空时，resultMap中可以显示
+    	configuration.setJdbcTypeForNull(JdbcType.NULL);//设置字段为空时，可插入jdbctype为null
     	configuration.addMappers("com.demo.app.dao.db2.mapper");
     	factoryBean.setConfiguration(configuration);
     	String dataType = dataSource2.getConnection().getMetaData().getDatabaseProductName();//链接数据库类型

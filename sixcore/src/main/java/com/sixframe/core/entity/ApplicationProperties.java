@@ -9,11 +9,16 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiModelProperty;
+
 public class ApplicationProperties {
 	
 	public static final String DATA_SOURCE_PREFIX="spring.datasource.six";
 	
 	public Map<String,DataSource> dataSources;
+	
+	public ApplicationProperties() {}
 	
 	public ApplicationProperties(Properties properties) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		dataSources = new HashMap<>();
@@ -39,12 +44,20 @@ public class ApplicationProperties {
 	
 	/**数据源类*/
 	public class DataSource{
+		@ApiModelProperty(value="数据源名",dataType="String",required=true)
 		private String dataSourceName;
+		@ApiModelProperty(value="数据库驱动类",dataType="String",required=true)
 		private String driverClassName;
+		@ApiModelProperty(value="数据库连接",dataType="String",required=true)
 		private String url;
+		@ApiModelProperty(value="用户名",dataType="String",required=true)
 		private String username;
+		@ApiModelProperty(value="密码",dataType="String",required=true)
 		private String password;
+		@ApiModelProperty(value="过滤器",dataType="String",required=true)
 		private String filters;
+		
+		public DataSource() {}
 		
 		public String getDataSourceName() {
 			return dataSourceName;

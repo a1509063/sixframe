@@ -24,11 +24,13 @@ public class ApplicationUtil {
 	
 	public static final String FILE_NAME_DEV = "application-dev.properties";
 	public static final String FILE_NAME_PROD = "application-prod.properties";
+	public static final String FILE_NAME_TEST = "application-test.properties";
 
 	public Properties readApplication(String realPath) throws IOException {
 //		File dirFile = new File(realPath);
 //		String url = dirFile.getAbsolutePath();
 //		url = url + "\\src\\main\\resources\\";
+		System.out.println(realPath);
 		File file = new File(realPath);
 		FileInputStream inStream = null;
 		try {

@@ -25,16 +25,43 @@ public class DataSourceOperService {
 	@Value("${isDev}")
 	private boolean isDev=false;
 	
+	@Value("${nowprofile}")
+	private String active="";
+	
+	@Value("${release.environment}")
+	private String environment="";
+	
 	public Map<String, DataSource> currentDataSource(HttpServletRequest request) {
 		Properties properties = null;
 		String realPath = null;
 		if(isDev) {
-			File dirFile = new File("");
-			String url = dirFile.getAbsolutePath();
-			realPath = url + "\\src\\main\\resources\\application-dev.properties";
+			System.out.println("1");
+			if("test".equals(active)) {
+				System.out.println("1-1");
+				if("Linux".equals(environment)) {
+					realPath = request.getServletContext().getRealPath("/WEB-INF/classes/application-test.properties");
+				}else {
+					realPath = request.getServletContext().getRealPath("\\WEB-INF\\classes\\application-test.properties");
+				}
+			}else {
+				System.out.println("1-2");
+				File dirFile = new File("");
+				String url = dirFile.getAbsolutePath();
+				if("Linux".equals(environment)) {
+					realPath = url + "/src/main/resources/application-dev.properties";
+				}else {
+					realPath = url + "\\src\\main\\resources\\application-dev.properties";
+				}
+			}
 		}else {
-			realPath = request.getServletContext().getRealPath("\\WEB-INF\\classes\\application-prod.properties");
+			System.out.println("2");
+			if("Linux".equals(environment)) {
+				realPath = request.getServletContext().getRealPath("/WEB-INF/classes/application-prod.properties");
+			}else {
+				realPath = request.getServletContext().getRealPath("\\WEB-INF\\classes\\application-prod.properties");
+			}
 		}
+		System.out.println("before realPath = " + realPath);
 		try {
 			properties = applicationUtil.readApplication(realPath);
 		} catch (IOException e) {
@@ -70,9 +97,17 @@ public class DataSourceOperService {
 			if(isDev) {
 				File dirFile = new File("");
 				String url = dirFile.getAbsolutePath();
-				realPath = url + "\\src\\main\\resources\\application-dev.properties";
+				if("Linux".equals(environment)) {
+					realPath = url + "/src/main/resources/application-dev.properties";
+				}else {
+					realPath = url + "\\src\\main\\resources\\application-dev.properties";
+				}
 			}else {
-				realPath = request.getServletContext().getRealPath("\\WEB-INF\\classes\\application-prod.properties");
+				if("Linux".equals(environment)) {
+					realPath = request.getServletContext().getRealPath("/WEB-INF/classes/application-prod.properties");
+				}else {
+					realPath = request.getServletContext().getRealPath("\\WEB-INF\\classes\\application-prod.properties");
+				}
 			}
 			
 			applicationUtil.writeApplication(dataSource,"dataSourceName",realPath);
