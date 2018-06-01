@@ -1,0 +1,13 @@
+// Clearfix
+// BootStrap里的，直接拿来用了
+
+.clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}

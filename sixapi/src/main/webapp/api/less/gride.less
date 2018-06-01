@@ -1,0 +1,29 @@
+//栅格布局
+@iterations: 12;
+.container{
+	// margin: 8px;
+}
+
+.row{
+	.clearfix();
+}
+
+.mixin-loop (@i,@type) when (@i > 0) {
+  .col-@{type}-@{i}{
+  	position: relative;
+  	float: left;
+    width: 100% / (12 / @i );
+  }
+  .col-@{type}-offset-@{i}{
+    margin-left: 100% / (12 / @i );
+  }
+  .mixin-loop(@i - 1,@type);
+}
+
+@media (min-width: 769px) {
+  .mixin-loop(@iterations,md)
+}
+
+@media (max-width: 768px) {
+  .mixin-loop(@iterations,ms)
+}
