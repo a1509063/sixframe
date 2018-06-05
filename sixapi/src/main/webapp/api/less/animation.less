@@ -1,0 +1,34 @@
+.anim{
+	-webkit-animation-duration: .3s;
+    animation-duration: .3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+.anim-up{
+	-webkit-animation-name: six-up;
+	animation-name: six-up;
+}
+@keyframes six-up {
+	from{
+		transform: translate3d(0,100%,0);
+		opacity: .3;
+	}to{
+		transform: translate3d(0,0,0);
+		opacity: 1;
+	}
+}
+.anim-scale{
+	-webkit-animation-name: six-scale;
+	animation-name: six-scale;
+}
+@keyframes six-scale {
+	from{
+	    opacity: .3;
+	    -ms-transform: scale(.5);
+	    transform: scale(.5);
+	}to{
+	    opacity: 1;
+	    -ms-transform: scale(1);
+	    transform: scale(1);
+	}
+}

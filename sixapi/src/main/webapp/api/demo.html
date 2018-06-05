@@ -4,6 +4,44 @@
 	<meta charset="UTF-8">
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="css/sixstrap.css">
+	<style type="text/css">
+		.anim-show .anim{
+			width: 150px;
+			height: 150px;
+			/*background-color: #009688;*/
+			border-radius: 100px;
+			text-align: center;
+			line-height: 150px;
+			color: #585858;
+			font-weight: bold;
+			font-size: 20px;
+			margin-top: 20px;
+			margin-left: 20px;
+			background-color: #FFFFFF;
+			border: 1px solid #DDDDDD;
+			box-shadow: 0px 2px 5px 0px #CCCCCC;
+			margin: 10px;
+			padding: 5px;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+	<script type="text/javascript" src="js/layer.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.anim').on('click',function(){
+				var othis = $(this),anim = othis.data('anim');
+				othis.removeClass(anim);
+
+				setTimeout(function(){
+					othis.addClass(anim);
+				});
+			})
+		});
+
+		function alerts(){
+			layer.alert("ff");
+		}
+	</script>
 </head>
 <body>
 	<nav class="navbar" style="height: 20px;width: 100%;position: fixed;top: 0;z-index: 10;background-color: #CBB7B7">
@@ -12,21 +50,85 @@
 	<nav class="navbar menu" style="width: 30px;">
 		
 	</nav>
+	<div class="scroll" style="float: left;background-color: #25AF89;height: 500px;width: 30px;">
+		<div style="height: 800px;width: 40px;background-color: #514EDB;">
+			
+		</div>
+	</div>
 	<div class="container back" style="margin-left: 30px;margin-top: 20px;">
 	    <div class="row" style="background-color: #F5F5F5"> 
 	    	<div class="col-md-4 fix col-ms-12">
 	    		<div class="panel" style="height: 200px;">
 	    			<label for="ins">吃了没</label>
 	    			<input type="tel" id="ins" name="ins">	
+	    			<button onclick="alerts();">弹出</button>
 	    		</div>
 	    	</div>
 	    	<div class="col-md-8 col-md-offset-4 col-ms-12" style="position: relative;">
     			<div class="row">
-    				<div class="panel col-md-2 " style="height: 800px;">
-    					
+    				<div class="col-md-3" style="height: 250px;">
+    					<div class="panel anim-show" style="height: 200px;">
+    						<div class="anim" data-anim = "anim-up">底部向上滑</div>
+    					</div>
     				</div>
-    				<div class="panel col-md-2 col-md-offset-2" style="height: 1200px;">
-    					
+    				<div class="col-md-3" style="height: 250px;">
+    					<div class="panel anim-show" style="height: 200px;">
+    						<div class="anim" data-anim = "anim-scale">平滑放大</div>
+    					</div>
+    				</div>
+    				<div class="col-md-3" style="height: 250px;">
+    					<div class="panel" style="height: 200px;">
+    						
+    					</div>
+    				</div>
+    				<div class="col-md-3" style="height: 250px;">
+    					<div class="panel" style="height: 200px;">
+    						
+    					</div>
+    				</div>
+    			</div>
+    			<div class="row">
+    				<div class="col-md-3" style="height: 250px;">
+    					<div class="panel" style="height: 200px;">
+    						
+    					</div>
+    				</div>
+    				<div class="col-md-3" style="height: 250px;">
+    					<div class="panel" style="height: 200px;">
+    						
+    					</div>
+    				</div>
+    				<div class="col-md-3" style="height: 250px;">
+    					<div class="panel" style="height: 200px;">
+    						
+    					</div>
+    				</div>
+    				<div class="col-md-3" style="height: 250px;">
+    					<div class="panel" style="height: 200px;">
+    						
+    					</div>
+    				</div>
+    			</div>
+    			<div class="row">
+    				<div class="col-md-3" style="height: 250px;">
+    					<div class="panel" style="height: 200px;">
+    						
+    					</div>
+    				</div>
+    				<div class="col-md-3" style="height: 250px;">
+    					<div class="panel" style="height: 200px;">
+    						
+    					</div>
+    				</div>
+    				<div class="col-md-3" style="height: 250px;">
+    					<div class="panel" style="height: 200px;">
+    						
+    					</div>
+    				</div>
+    				<div class="col-md-3" style="height: 250px;">
+    					<div class="panel" style="height: 200px;">
+    						
+    					</div>
     				</div>
     			</div>
 	    	</div>

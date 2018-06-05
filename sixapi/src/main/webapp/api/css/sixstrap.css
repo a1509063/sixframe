@@ -223,6 +223,33 @@ td {
     margin-left: 8.33333333%;
   }
 }
+.scroll {
+  overflow-x: auto;
+  overflow-y: auto;
+}
+.scroll ::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.scroll ::-webkit-scrollbar-button {
+  display: none;
+}
+.scroll ::-webkit-scrollbar-track {
+  background: #737373;
+}
+.scroll ::-webkit-scrollbar-track-piece {
+  background: #EEEEEE;
+}
+.scroll ::-webkit-scrollbar-thumb {
+  background: #CCCCCC;
+  border-radius: 100px;
+}
+.scroll ::-webkit-scrollbar-corner {
+  background: #EEEEEE;
+}
+.scroll ::-webkit-scrollbar-resizer {
+  background: #EEEEEE;
+}
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -258,6 +285,42 @@ td {
 }
 .fix {
   position: fixed;
+}
+.anim {
+  -webkit-animation-duration: .3s;
+  animation-duration: .3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.anim-up {
+  -webkit-animation-name: six-up;
+  animation-name: six-up;
+}
+@keyframes six-up {
+  from {
+    transform: translate3d(0, 100%, 0);
+    opacity: .3;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+.anim-scale {
+  -webkit-animation-name: six-scale;
+  animation-name: six-scale;
+}
+@keyframes six-scale {
+  from {
+    opacity: .3;
+    -ms-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    -ms-transform: scale(1);
+    transform: scale(1);
+  }
 }
 /* FONT PATH
  * -------------------------- */
